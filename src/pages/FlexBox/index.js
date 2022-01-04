@@ -1,9 +1,37 @@
 import React, {Component} from 'react';
 import {Text, View, Image} from 'react-native';
-import Apple from '../assets/images/apple.png';
+import Apple from '../../assets/images/apple.png';
 
 class FlexBox extends Component {
+  // lifecycle components
+  constructor(props) {
+    super(props);
+    console.log('==> constructor');
+
+    this.state = {
+      subcriber: 200,
+    };
+  }
+
+  componentDidMount() {
+    console.log('==> component did mount');
+    setTimeout(() => {
+      this.setState({
+        subcriber: 400,
+      });
+    }, 2000);
+  }
+
+  componentDidUpdate() {
+    console.log('==> component did update');
+  }
+
+  componentWillUnmount() {
+    console.log('==> component will unmount');
+  }
+
   render() {
+    console.log('==> render');
     return (
       // mengatur layout dengan Flex Box
       <View>
@@ -73,7 +101,7 @@ class FlexBox extends Component {
             <Text style={{fontSize: 20, fontWeight: 'bold'}}>
               Ihsan Miftahul Huda
             </Text>
-            <Text>100rb Subcriber</Text>
+            <Text>{this.state.subcriber}rb Subcriber</Text>
           </View>
         </View>
       </View>
