@@ -19,6 +19,7 @@ const StylingReactNativeComponent = () => {
           marginLeft: 20,
         }}
       />
+      {/* wrapper card */}
       <View
         style={{
           padding: 12,

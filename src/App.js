@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {View, ScrollView} from 'react-native';
 import Comunication from './pages/Comunication';
 import FlexBox from './pages/FlexBox';
-import Home from './pages/Home';
 import PropsDinamis from './pages/PropsDinamis';
 import StateDinamis from './pages/StateDinamis';
 import StylingReactNativeComponent from './components/StylingReactNativeComponent';
@@ -18,8 +17,6 @@ const App = () => {
   return (
     <View>
       <ScrollView>
-        {/* <Home /> */}
-        <StylingReactNativeComponent />
         {/* {isShow && <FlexBox />} */}
         {/* <PropsDinamis /> */}
         {/* <StateDinamis /> */}

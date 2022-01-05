@@ -2,13 +2,12 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import GambarCart from '../../assets/images/cart.png';
 
-const Cart = () => {
+const Cart = props => {
   return (
     <View style={styles.wrapper}>
-      <Text>Materi Potition React Native</Text>
       <View style={styles.cartWrapper}>
         <Image source={GambarCart} style={styles.iconCart} />
-        <Text style={styles.notif}>10</Text>
+        <Text style={styles.notif}>{props.quantity}</Text>
       </View>
       <Text style={styles.text}>Keranjang Belanja Anda</Text>
     </View>
