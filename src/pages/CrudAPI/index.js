@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import {
+  Alert,
   Button,
   StyleSheet,
   Text,
@@ -9,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-const Item = ({name, email, divisi, onPress}) => {
+const Item = ({name, email, divisi, onPress, onDelete}) => {
   return (
     <View style={styles.containerItem}>
       <View style={styles.desc}>
@@ -19,7 +20,9 @@ const Item = ({name, email, divisi, onPress}) => {
           <Text>{divisi}</Text>
         </TouchableOpacity>
       </View>
-      <Text styles={styles.delete}>X</Text>
+      <TouchableOpacity onPress={onDelete}>
+        <Text styles={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -65,7 +68,7 @@ const CrudAPI = () => {
         });
     }
     // create
-    //   console.log('data before send: ', data);
+    // console.log('data before send: ', data);
     // axios.post('http://10.0.2.2:3000/users', data).then(res => {
     //   console.log('res: ', res);
     //   setName('');
@@ -91,6 +94,14 @@ const CrudAPI = () => {
     setEmail(item.email);
     setDivisi(item.divisi);
     setButton('Update');
+  };
+
+  const deleteItem = item => {
+    console.log('selected Item: ', item);
+    axios.delete(`http://10.0.2.2:3000/users/${item.id}`).then(res => {
+      console.log('res: ', res);
+      getData();
+    });
   };
 
   return (
@@ -125,6 +136,21 @@ const CrudAPI = () => {
             email={user.email}
             divisi={user.divisi}
             onPress={() => selectItem(user)}
+            onDelete={() =>
+              Alert.alert(
+                'Peringatan',
+                'Anda Yakin akan menghapus data ini ?',
+                [
+                  {
+                    text: 'Tidak',
+                    onPress: () => {
+                      console.log('btn tidak');
+                    },
+                  },
+                  {text: 'Ya', onPress: () => deleteItem(user)},
+                ],
+              )
+            }
           />
         );
       })}
