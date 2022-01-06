@@ -5,6 +5,9 @@ import FlexBox from './pages/FlexBox';
 import PropsDinamis from './pages/PropsDinamis';
 import StateDinamis from './pages/StateDinamis';
 import StylingReactNativeComponent from './components/StylingReactNativeComponent';
+import CallApiVanilla from './pages/CallAPIVanilla';
+import CallApiAxios from './pages/CallAPIAxios';
+import CrudAPI from './pages/crudAPI';
 
 const App = () => {
   // react hook
@@ -20,7 +23,10 @@ const App = () => {
         {/* {isShow && <FlexBox />} */}
         {/* <PropsDinamis /> */}
         {/* <StateDinamis /> */}
-        <Comunication />
+        {/* <Comunication /> */}
+        {/* <CallApiVanilla /> */}
+        {/* <CallApiAxios /> */}
+        <CrudAPI />
       </ScrollView>
     </View>
   );

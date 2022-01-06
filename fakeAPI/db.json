@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "isan",
+      "email": "isan@gmail.com",
+      "divisi": "React Dev"
+    },
+    {
+      "name": "Ihsan dfasdfasdf",
+      "email": "ihsan@gmail.com",
+      "divisi": "Fullstack Developer",
+      "id": 2
+    },
+    {
+      "name": "Ihsan miftahul ",
+      "email": "ihsan.mh@gmail.com",
+      "divisi": "BackEnd Developer",
+      "id": 3
+    },
+    {
+      "name": "fasdfasdf",
+      "email": "asfasdfa",
+      "divisi": "asdfsadfasdf",
+      "id": 4
+    }
+  ]
+}
