@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {
   Alert,
   Button,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -13,15 +14,13 @@ import {
 const Item = ({name, email, divisi, onPress, onDelete}) => {
   return (
     <View style={styles.containerItem}>
-      <View style={styles.desc}>
-        <TouchableOpacity onPress={onPress}>
-          <Text>{name}</Text>
-          <Text>{email}</Text>
-          <Text>{divisi}</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={onPress}>
+        <Text style={styles.itemText}>{name}</Text>
+        <Text>{email}</Text>
+        <Text>{divisi}</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={onDelete}>
-        <Text styles={styles.delete}>X</Text>
+        <Text style={styles.delete}>X</Text>
       </TouchableOpacity>
     </View>
   );
@@ -105,56 +104,58 @@ const CrudAPI = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.container}>CrudAPI</Text>
-      <Text>Data Pegawai</Text>
-      <TextInput
-        placeholder="Nama Lengkap"
-        style={styles.input}
-        value={name}
-        onChangeText={value => setName(value)}
-      />
-      <TextInput
-        placeholder="Email"
-        style={styles.input}
-        value={email}
-        onChangeText={value => setEmail(value)}
-      />
-      <TextInput
-        placeholder="Divisi"
-        style={styles.input}
-        value={divisi}
-        onChangeText={value => setDivisi(value)}
-      />
-      {/* <Button title="Simpan" onPress={submit} /> */}
-      <Button title={button} onPress={submit} />
-      {users.map(user => {
-        return (
-          <Item
-            key={user.id}
-            name={user.name}
-            email={user.email}
-            divisi={user.divisi}
-            onPress={() => selectItem(user)}
-            onDelete={() =>
-              Alert.alert(
-                'Peringatan',
-                'Anda Yakin akan menghapus data ini ?',
-                [
-                  {
-                    text: 'Tidak',
-                    onPress: () => {
-                      console.log('btn tidak');
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.container}>CrudAPI</Text>
+        <Text>Data Pegawai</Text>
+        <TextInput
+          placeholder="Nama Lengkap"
+          style={styles.input}
+          value={name}
+          onChangeText={value => setName(value)}
+        />
+        <TextInput
+          placeholder="Email"
+          style={styles.input}
+          value={email}
+          onChangeText={value => setEmail(value)}
+        />
+        <TextInput
+          placeholder="Divisi"
+          style={styles.input}
+          value={divisi}
+          onChangeText={value => setDivisi(value)}
+        />
+        {/* <Button title="Simpan" onPress={submit} /> */}
+        <Button title={button} onPress={submit} />
+        {users.map(user => {
+          return (
+            <Item
+              key={user.id}
+              name={user.name}
+              email={user.email}
+              divisi={user.divisi}
+              onPress={() => selectItem(user)}
+              onDelete={() =>
+                Alert.alert(
+                  'Peringatan',
+                  'Anda Yakin akan menghapus data ini ?',
+                  [
+                    {
+                      text: 'Tidak',
+                      onPress: () => {
+                        console.log('btn tidak');
+                      },
                     },
-                  },
-                  {text: 'Ya', onPress: () => deleteItem(user)},
-                ],
-              )
-            }
-          />
-        );
-      })}
-    </View>
+                    {text: 'Ya', onPress: () => deleteItem(user)},
+                  ],
+                )
+              }
+            />
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -175,15 +176,20 @@ const styles = StyleSheet.create({
   },
   containerItem: {
     flexDirection: 'row',
-    marginVertical: 20,
+    justifyContent: 'space-between',
+    padding: 20,
     alignItems: 'center',
+    marginVertical: 8,
+    backgroundColor: '#ffeaa7',
   },
   delete: {
-    fontSize: 35,
+    color: 'red',
+    fontSize: 16,
     fontWeight: 'bold',
+    marginRight: 10,
   },
-  desc: {
-    marginLeft: 18,
-    flex: 1,
+  itemText: {
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });

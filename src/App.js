@@ -7,7 +7,9 @@ import StateDinamis from './pages/StateDinamis';
 import StylingReactNativeComponent from './components/StylingReactNativeComponent';
 import CallApiVanilla from './pages/CallAPIVanilla';
 import CallApiAxios from './pages/CallAPIAxios';
-import CrudAPI from './pages/crudAPI';
+import CrudAPI from './pages/CrudAPI';
+import {NavigationContainer} from '@react-navigation/native';
+import Router from './router';
 
 const App = () => {
   // react hook
@@ -18,17 +20,20 @@ const App = () => {
   //   }, 6000);
   // }, []);
   return (
-    <View>
-      <ScrollView>
-        {/* {isShow && <FlexBox />} */}
-        {/* <PropsDinamis /> */}
-        {/* <StateDinamis /> */}
-        {/* <Comunication /> */}
-        {/* <CallApiVanilla /> */}
-        {/* <CallApiAxios /> */}
-        <CrudAPI />
-      </ScrollView>
-    </View>
+    // <View>
+    //   <ScrollView>
+    //     {/* {isShow && <FlexBox />} */}
+    //     {/* <PropsDinamis /> */}
+    //     {/* <StateDinamis /> */}
+    //     {/* <Comunication /> */}
+    //     {/* <CallApiVanilla /> */}
+    //     {/* <CallApiAxios /> */}
+    //     <CrudAPI />
+    //   </ScrollView>
+    // </View>
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   );
 };
 

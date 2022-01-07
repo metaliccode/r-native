@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Button, Image} from 'react-native';
 
-const CallApiAxios = () => {
+const CallApiAxios = ({navigation}) => {
   const [dataUser, setDataUser] = useState({
     avatar: '',
     email: '',
@@ -51,6 +51,14 @@ const CallApiAxios = () => {
       <Text style={styles.text}>Response POST DATA</Text>
       <Text>{dataJob.name}</Text>
       <Text>{dataJob.job}</Text>
+      <Button
+        title="Ke Halaman CRUD API"
+        onPress={() => navigation.navigate('CRUD')}
+      />
+      {/* <Button
+        title="Open Camera"
+        onPress={() => navigation.navigate('Camera')}
+      /> */}
     </View>
   );
 };
